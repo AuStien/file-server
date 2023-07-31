@@ -56,6 +56,8 @@ jobs:
           images: ghcr.io/austien/file-server
           tags: |
             type=semver,pattern={{version}}
+          flavor: |
+            latest=true
       
       - name: Log in to the GHCR
         uses: docker/login-action@v2
