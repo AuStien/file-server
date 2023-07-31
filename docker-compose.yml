@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  file-server:
+    image: ghcr.io/austien/file-server
+    environment:
+      - FILE_SERVER_ROOT_FOLDER=/app/data
+      - FILE_SERVER_HOST=http://localhost
+    volumes:
+      - ./testdata:/app/data 
+    ports:
+      - "8000:8000"
