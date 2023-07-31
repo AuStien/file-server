@@ -39,6 +39,9 @@ func handleRandom(client *files.Client) http.HandlerFunc {
 		}
 
 		w.Header().Add("Content-Type", "application/json")
-		w.Write(b)
+		if _, err := w.Write(b); err != nil {
+			log.WithError(err).Error("writing bytes")
+			w.WriteHeader(http.StatusInternalServerError)
+		}
 	}
 }
